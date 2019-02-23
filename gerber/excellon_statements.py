@@ -152,7 +152,9 @@ class ExcellonTool(ExcellonStatement):
             An ExcellonTool representing the tool defined in `line`
         """
         commands = re.split('([BCFHSTZ])', line)[1:]
-        commands = [(command, value) for command, value in pairwise(commands)]
+        # Iterate over list taking two elements at a time
+        commands = [(command, value) for command, value in zip(commands[0::2], commands[1::2])]        
+        
         args = {}
         args['id'] = id
         nformat = settings.format
@@ -968,11 +970,3 @@ class SlotStmt(ExcellonStatement):
 
         return '<Slot Statement: %s to %s>' % (start_str, end_str)
 
-def pairwise(iterator):
-    """ Iterate over list taking two elements at a time.
-
-    e.g. [1, 2, 3, 4, 5, 6] ==> [(1, 2), (3, 4), (5, 6)]
-    """
-    itr = iter(iterator)
-    while True:
-        yield tuple([next(itr) for i in range(2)])
