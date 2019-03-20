@@ -11,7 +11,7 @@ def long_description():
 setup(
     # TODO: rename to actual module name or rename module
     name='pcb-tools',
-    version='0.1.5',
+    version='0.1.6',
     author='Paulo Henrique Silva, Hamilton Kibbe',
     author_email='ph.silva@gmail.com, ham@hamiltonkib.be',
     description='Utilities to handle Gerber (RS-274X) files.',
